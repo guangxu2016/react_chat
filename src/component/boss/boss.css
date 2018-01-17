@@ -1,0 +1,21 @@
+/*
+* @Author: Marte
+* @Date:   2018-01-17 21:09:39
+* @Last Modified by:   Marte
+* @Last Modified time: 2018-01-17 21:27:14
+*/
+.am-card-header-content img{
+    width: 50px;
+}
+.am-card {
+    position: relative;
+
+}
+.am-card-header-extra span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    margin-top: 3px;
+    margin-right: 5px;
+}
