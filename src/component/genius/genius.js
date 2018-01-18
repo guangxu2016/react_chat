@@ -7,12 +7,10 @@
 
 import React from "react";
 import axios from "axios";
-import {Card,whiteSpace,WingBlank} from "antd-mobile";
+
 import {connect} from "react-redux";
 
 import {getUserList} from "../../redux/chatuser.redux.js";
-
-import "./boss.css";
 import UserCard from "../../component/usercard/usercard.js";
 
 @connect(
@@ -20,22 +18,16 @@ import UserCard from "../../component/usercard/usercard.js";
     {getUserList}
 )
 
-class Boss extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            data:[]
-        }
-    }
+class Genius extends React.Component {
+
     componentDidMount() {
         // 查找数据
-        this.props.getUserList("genius")
+        this.props.getUserList("boss")
     }
     render() {
-        const Header = Card.Header
-        const Body = Card.Body
+
         return <UserCard userlist={this.props.userlist}></UserCard>
     }
 }
 
-export default Boss
+export default Genius

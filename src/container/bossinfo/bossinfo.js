@@ -1,7 +1,7 @@
 /*
 * @Author: Marte
 * @Date:   2018-01-17 12:14:09
-* @Last Modified by:   Marte
+* @Last Modified by:  BOSS信息
 * @Last Modified time: 2018-01-17 16:07:29
 */
 import React from "react";
@@ -40,6 +40,7 @@ class BossInfo extends React.Component {
         console.log(redirect);
         return (
             <div>
+                {/*判断跳转页面是否相同*/}
                 {redirect&&redirect!==path? <Redirect to={this.props.redirectTo}></Redirect>:null}
                  <NavBar mode="dark">
                     BOSS完善信息页面

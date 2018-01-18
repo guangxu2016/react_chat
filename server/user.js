@@ -18,6 +18,7 @@ Router.get("/list",function(req,res){
 
 // 更新
 Router.post("/update",function(req,res){
+    // 查找用户
     const userid = req.cookies.userid
     if(!userid) {
         return json.dumps({code:1})

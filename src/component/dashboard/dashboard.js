@@ -1,9 +1,8 @@
 /*
 * @Author: Marte
 * @Date:   2018-01-17 16:27:14
-* @Last Modified by:   Marte
+* @Last Modified by:   BOSS/牛人公用页面
 * @Last Modified time: 2018-01-17 20:35:07
-*         BOSS/牛人公用
 */
 
 import React from "react";
@@ -13,10 +12,8 @@ import {Switch,Route} from "react-router-dom";
 
 import NavLinkBar from "../navlink/navlink.js";
 import Boss from "../../component/boss/boss.js";
+import Genius from "../../component/genius/genius.js";
 
-function Genius() {
-    return <h2>牛人首页</h2>
-}
 function Msg() {
     return <h2>消息首页</h2>
 }

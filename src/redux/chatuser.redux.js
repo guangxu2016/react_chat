@@ -25,6 +25,7 @@ function userList(data) {
     return {type:USER_LIST,payload:data}
 }
 
+// 发送请求，查找数据
 export function getUserList(type) {
     return dispatch=>{
         axios.get("/user/list?type="+type)

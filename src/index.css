@@ -29,3 +29,10 @@
 .genius {
     width: 50px;
 }
+.am-list-header {
+    margin-top: 45px;
+}
+.am-list-header img {
+    width: 30px;
+    height: 40px;
+}
