@@ -13,13 +13,12 @@ import {Switch,Route} from "react-router-dom";
 import NavLinkBar from "../navlink/navlink.js";
 import Boss from "../../component/boss/boss.js";
 import Genius from "../../component/genius/genius.js";
+import User from "../../component/user/user.js";
 
 function Msg() {
     return <h2>消息首页</h2>
 }
-function User() {
-    return <h2>个人中心</h2>
-}
+
 @connect(
     state=>state
 )
