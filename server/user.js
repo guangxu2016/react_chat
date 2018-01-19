@@ -7,7 +7,7 @@ const User = model.getModel("user");
 const Chat = model.getModel("chat");
 const _filter = {"pwd":0,"_v":0}
 
-// 清空信息
+// 清空聊天信息
 // Chat.remove({},function(e,d){
 //
 // })
@@ -15,7 +15,7 @@ const _filter = {"pwd":0,"_v":0}
 // /查找 返回信息
 Router.get("/list",function(req,res){
     const { type } = req.query
-    // 清除所有xinxi
+    // 清除所有数据的信息
     // User.remove({},function(e,d){})
     User.find({type},function(err,doc){
         return res.json({code:0,data:doc})
