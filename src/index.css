@@ -9,6 +9,13 @@
     text-align: center;
     padding-top: 15px;
 }
+
+.am-navbar  {
+    z-index: 10;
+}
+.content_top {
+    margin-bottom: 50px;
+}
 .am-tab-bar-bar {
     position: fixed;
     bottom: 0;
