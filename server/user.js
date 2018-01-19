@@ -4,6 +4,7 @@ const utils = require("utility");
 const Router = express.Router();
 const model = require("./model");
 const User = model.getModel("user");
+const Chat = model.getModel("chat");
 const _filter = {"pwd":0,"_v":0}
 
 // /查找 返回信息
@@ -13,6 +14,15 @@ Router.get("/list",function(req,res){
     // User.remove({},function(e,d){})
     User.find({type},function(err,doc){
         return res.json({code:0,data:doc})
+    })
+})
+
+Router.get("/getmsglist",function(req,res){
+    const user = req.cookies.user
+    Chat.find({},function(err,doc){
+        if(!err) {
+            return res.json({code:1,msgs:doc})
+        }
     })
 })
 
@@ -45,7 +55,7 @@ Router.post("/login",function(req,res) {
     })
 
 })
-
+    // 注册信息
 Router.post("/register",function(req,res){
     console.log(req.body);
     const {user,pwd,type} = req.body
@@ -67,7 +77,7 @@ Router.post("/register",function(req,res){
 
     })
 })
-
+// 获取用户信息
 Router.get("/info",function(req,res){
     // 0是登录成功，1是失败
     //req是读请请求
@@ -86,7 +96,7 @@ Router.get("/info",function(req,res){
     })
 
 })
-
+// 加密
 function md5Pwd(pwd) {
     const salt = "imooc_sdfjD@!45"
     return utils.md5(utils.md5(pwd+salt))
