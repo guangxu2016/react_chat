@@ -1,5 +1,5 @@
 import React from "react";
-import {List, InputItem,NavBar} from "antd-mobile";
+import {List, InputItem,NavBar,Icon} from "antd-mobile";
 import {connect} from "react-redux";
 import io from "socket.io-client";
 
@@ -45,21 +45,28 @@ class Chat extends React.Component {
         const userid = this.props.match.params.user
         const Item = List.Item
         const users = this.props.chat.users
-        // if(!users[userid]) {
-        //     return null
-        // }
+        if(!users[userid]) {
+            return null
+        }
         return (
             <div className="chat-page">
-                <NavBar mode="dark">
-                    {/*{users[userid].name}*/}
-                    {userid}
+                <NavBar
+                    icon={<Icon type="left" />}
+                    mode="dark"
+                    onLeftClick={()=>{
+                        this.props.history.goBack()
+                    }}
+                >
+                    {users[userid].name}
+                    {/*{userid}*/}
                 </NavBar>
 
                 {this.props.chat.chatmsg.map(v=>{
+                   const avatar = require(`../image/${users[v.from].avatar}.jpg`)
                     return v.from==userid?(
                         <List key={v._id}>
                             <Item
-                                extra={"me"}
+                                thumb={avatar}
                             >
                                 {v.content}
                             </Item>
@@ -67,7 +74,7 @@ class Chat extends React.Component {
                     ):(
                         <List key={v._id}>
                             <Item
-                                extra={"avatar"}
+                                extra={<img src={avatar} />}
                                 className={"chat-me"}
                             >
                                 {v.content}

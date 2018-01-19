@@ -7,6 +7,7 @@ const User = model.getModel("user");
 const Chat = model.getModel("chat");
 const _filter = {"pwd":0,"_v":0}
 
+// 清空信息
 // Chat.remove({},function(e,d){
 //
 // })
@@ -22,6 +23,7 @@ Router.get("/list",function(req,res){
 })
 
 Router.get("/getmsglist",function(req,res){
+    // 获取当前用户信息
     const user = req.cookies.userid
     User.find({},function(e,userdoc){
         let users = {}
@@ -30,7 +32,7 @@ Router.get("/getmsglist",function(req,res){
         })
         Chat.find({"$or":[{from:user},{to:user}]},function(err,doc){
             if(!err) {
-                return res.json({code:1,msgs:doc,users:users})
+                return res.json({code:0,msgs:doc,users:users})
             }
         })
     })

@@ -52,9 +52,9 @@
     flex-basis: auto;
 }
 
-#chat-page .chat-me .am-list-content {
-    padding-right: 15px;
-    text-align: center;
+ .chat-me  {
+
+    text-align: right;
 }
 .stick-footer{
     z-index: 10;
@@ -66,4 +66,8 @@
 
 .am-list-extra {
     width: 50px;
+}
+
+.am-list-item .am-list-line .am-list-content {
+    float: right;
 }

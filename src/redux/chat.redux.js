@@ -10,8 +10,10 @@ const MSG_RECV = "MSG_RECV";
 const MSG_READ = "MSG_READ";
 
 const initState = {
+    // 聊天信息
     chatmsg:[],
     users:{},
+    // 未读
     unread:0
 }
 
