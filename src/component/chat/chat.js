@@ -21,12 +21,10 @@ class Chat extends React.Component {
     }
 
     componentDidMount() {
-
-        // socket.on("recvmsg", (data) => {
-        //     this.setState({
-        //         msg: [...this.state.msg, data.text]
-        //     })
-        // })
+       if(!this.props.chat.chatmsg.length) {
+           this.props.getMsgList()
+           this.props.recvMsg()
+       }
     }
 
     handleSubmit() {
@@ -43,17 +41,22 @@ class Chat extends React.Component {
     }
 
     render() {
-        console.log(this.props)
-        const user = this.props.match.params.user
+        // console.log(this.props)
+        const userid = this.props.match.params.user
         const Item = List.Item
+        const users = this.props.chat.users
+        // if(!users[userid]) {
+        //     return null
+        // }
         return (
             <div className="chat-page">
                 <NavBar mode="dark">
-                    {this.props.match.params.user}
+                    {/*{users[userid].name}*/}
+                    {userid}
                 </NavBar>
 
                 {this.props.chat.chatmsg.map(v=>{
-                    return v.from==user?(
+                    return v.from==userid?(
                         <List key={v._id}>
                             <Item
                                 extra={"me"}
