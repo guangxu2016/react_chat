@@ -36,3 +36,8 @@
     width: 30px;
     height: 40px;
 }
+.chat-footer {
+    position:fixed;
+    left: 0;
+    bottom: 0;
+}
