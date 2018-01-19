@@ -7,6 +7,10 @@ const User = model.getModel("user");
 const Chat = model.getModel("chat");
 const _filter = {"pwd":0,"_v":0}
 
+// Chat.remove({},function(e,d){
+//
+// })
+
 // /查找 返回信息
 Router.get("/list",function(req,res){
     const { type } = req.query

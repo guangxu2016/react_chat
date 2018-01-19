@@ -41,3 +41,32 @@
     left: 0;
     bottom: 0;
 }
+
+.chat-page {
+    margin-top: 60px;
+}
+.page-content {
+    padding:45px 5px;
+}
+#chat-page .chat-me .am-list-extra {
+    flex-basis: auto;
+}
+
+#chat-page .chat-me .am-list-content {
+    padding-right: 15px;
+    text-align: center;
+}
+.stick-footer{
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.am-list-item .am-list-line .am-list-content {
+    text-align: right;
+    float: right;
+}
+.am-list-extra {
+    width: 50px;
+}
