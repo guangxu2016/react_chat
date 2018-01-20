@@ -3,14 +3,14 @@ import {List, InputItem, NavBar, Icon, Grid} from "antd-mobile";
 import {connect} from "react-redux";
 import io from "socket.io-client";
 
-import {getMsgList, sendMsg, recvMsg} from "../../redux/chat.redux.js";
+import {getMsgList, sendMsg, recvMsg, readMsg} from "../../redux/chat.redux.js";
 import {getChatId} from "../../util.js";
 
 const socket = io("ws://localhost:9093");
 
 @connect(
     state => state,
-    {getMsgList, sendMsg, recvMsg}
+    {getMsgList, sendMsg, recvMsg, readMsg}
 )
 class Chat extends React.Component {
     constructor(props) {
@@ -23,10 +23,21 @@ class Chat extends React.Component {
 
     componentDidMount() {
         if (!this.props.chat.chatmsg.length) {
+            // 获取所有信息列表
             this.props.getMsgList()
+            // 接受信息
             this.props.recvMsg()
         }
+        console.log(this.props)
 
+    }
+    //在当前页面，收到消息不会提示未读
+    componentWillUnmount() {
+        // 获取聊天用户
+        const to = this.props.match.params.user
+        //to和谁聊天
+        this.props.readMsg(to)
+        console.log(this.props)
     }
     fixCarousel() {
         setTimeout(function () {
@@ -44,7 +55,7 @@ class Chat extends React.Component {
         this.props.sendMsg(from, to, msg)
         this.setState({
             text: "",
-            showEmoji:false
+            showEmoji: false
         })
     }
 
@@ -110,13 +121,13 @@ class Chat extends React.Component {
                             extra={
                                 <div>
                                     <span
-                                        onClick={()=>{
+                                        onClick={() => {
                                             this.setState({
-                                                showEmoji:!this.state.showEmoji
+                                                showEmoji: !this.state.showEmoji
                                             })
                                             this.fixCarousel()
                                         }}
-                                        style={{marginRight:15}}
+                                        style={{marginRight: 15}}
                                     >😊</span>
                                     <span onClick={() => this.handleSubmit()}>发送</span>
                                 </div>
@@ -125,18 +136,18 @@ class Chat extends React.Component {
                             信息
                         </InputItem>
                     </List>
-                    {this.state.showEmoji?<Grid
+                    {this.state.showEmoji ? <Grid
                         data={emoji}
                         columnNum={9}
                         carouselMaxRow={4}
                         isCarousel={true}
-                        onClick={el=>{
+                        onClick={el => {
                             this.setState({
-                                text:this.state.text+el.text
+                                text: this.state.text + el.text
                             })
                             console.log(el)
                         }}
-                    />:null}
+                    /> : null}
 
                 </div>
 

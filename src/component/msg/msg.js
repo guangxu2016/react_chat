@@ -14,17 +14,21 @@ class Msg extends React.Component {
     render() {
         const Item = List.Item
         const Brief = Item.Brief
+        //用户id
         const userid = this.props.user._id
+        // 聊天用户信息
         const userinfo = this.props.chat.users
-        // console.log(this.props)
+
+        console.log(this.props)
         const msgGroup = {}
+        //对输入的内容遍历
         this.props.chat.chatmsg.forEach(v => {
             // 判断是否相同，不是返回空数组
             msgGroup[v.chatid] = msgGroup[v.chatid] || []
             msgGroup[v.chatid].push(v)
         })
         console.log(msgGroup)
-
+        //对消息排序
         const chatList = Object.values(msgGroup).sort((a, b) => {
             const a_last = this.getLast(a).create_time
             const b_last = this.getLast(b).create_time
@@ -35,7 +39,8 @@ class Msg extends React.Component {
             <div>
                 <List>
                     {chatList.map(v => {
-                        // console.log(v)
+                        console.log(v)
+                        // 聊天信息
                         const lastItem = this.getLast(v)
                         //v是数组
                         const targetId = v[0].from == userid ? v[0].to : v[0].from
@@ -45,15 +50,15 @@ class Msg extends React.Component {
                         const unreadNum = v.filter(v => !v.read && v.to == userid).length
 
                         return (<Item
-                                arrow="horizontal"
-                                key={lastItem._id}
-                                extra={<Badge text={unreadNum}></Badge>}
-                                thumb={require(`../image/${userinfo[targetId].avatar}.jpg`)}
-                                onClick={()=>{
-                                        this.props.history.push(`/chat/${targetId}`)
-                                    }
-                                }
-                            >
+                            arrow="horizontal"
+                            key={lastItem._id}
+                            extra={<Badge text={unreadNum}></Badge>}
+                            thumb={require(`../image/${userinfo[targetId].avatar}.jpg`)}
+                            onClick={() => {
+                                this.props.history.push(`/chat/${targetId}`)
+                            }
+                            }
+                        >
                             {lastItem.content}
                             {/*获取用户名.*/}
                             <Brief>{userinfo[targetId].name}</Brief>
