@@ -60,7 +60,6 @@
 }
 
  .chat-me  {
-
     text-align: right;
 }
 
@@ -71,4 +70,29 @@
 
 .am-list-item .am-list-line .am-list-content {
     float: right;
+}
+
+.chat-footer{
+    z-index: 100;
+}
+ .am-grid-icon {
+    display:none;
+}
+。am-grid-text {
+    margin-top: 0;
+}
+
+.stick-footer {
+    /*z-index:10;*/
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+/*.am-list-line {*/
+
+/*}*/
+
+.am-grid-carousel-page {
+    height: 145px;
+    background-color: red;
 }

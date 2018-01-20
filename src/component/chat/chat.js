@@ -1,16 +1,16 @@
 import React from "react";
-import {List, InputItem,NavBar,Icon} from "antd-mobile";
+import {List, InputItem, NavBar, Icon, Grid} from "antd-mobile";
 import {connect} from "react-redux";
 import io from "socket.io-client";
 
-import {getMsgList,sendMsg,recvMsg} from "../../redux/chat.redux.js";
+import {getMsgList, sendMsg, recvMsg} from "../../redux/chat.redux.js";
 import {getChatId} from "../../util.js";
 
 const socket = io("ws://localhost:9093");
 
-@connect (
-    state=>state,
-    {getMsgList,sendMsg,recvMsg}
+@connect(
+    state => state,
+    {getMsgList, sendMsg, recvMsg}
 )
 class Chat extends React.Component {
     constructor(props) {
@@ -22,10 +22,16 @@ class Chat extends React.Component {
     }
 
     componentDidMount() {
-       if(!this.props.chat.chatmsg.length) {
-           this.props.getMsgList()
-           this.props.recvMsg()
-       }
+        if (!this.props.chat.chatmsg.length) {
+            this.props.getMsgList()
+            this.props.recvMsg()
+        }
+
+    }
+    fixCarousel() {
+        setTimeout(function () {
+            window.dispatchEvent(new Event("resize"))
+        }, 0)
     }
 
     handleSubmit() {
@@ -35,30 +41,36 @@ class Chat extends React.Component {
         const from = this.props.user._id
         const to = this.props.match.params.user
         const msg = this.state.text
-        this.props.sendMsg(from,to,msg)
+        this.props.sendMsg(from, to, msg)
         this.setState({
-            text:""
+            text: "",
+            showEmoji:false
         })
     }
 
     render() {
+        const emoji = "😄 😃 😀 😊 ☺ 😉 😍 😘 😚 😗 😙 😜 😝 😛 😳 😁 😔 😌 😒 😞 😣 😢 😂 😭 😪 😥 😰 😅 😓 😩 😫 😨 😱 😠 😡 😤 😖 😆 😋 😷 😎 😴 😵 😲 😟 😦 😧 😈 👿 😮 😬 😐 😕 😯 😶 😇 😏 😑 👲 👳 👮 👷 💂 👶 👦 👧 👨 👩 👴 👵 👱 👼 👸 😺 😸 😻 😽 😼 🙀 😿 😹 😾 👹 👺 🙈 🙉 🙊 💀 👽 💩 🔥 ✨ 🌟"
+            .split(" ")
+            .filter(v => v)
+            .map(v => ({text: v}))
+
         // console.log(this.props)
         const userid = this.props.match.params.user
         const Item = List.Item
         const users = this.props.chat.users
-        if(!users[userid]) {
+        if (!users[userid]) {
             return null
         }
-        const chatid = getChatId(userid,this.props.user._id)
+        const chatid = getChatId(userid, this.props.user._id)
         // 过滤用户信息
-        const chatmsgs = this.props.chat.chatmsg.filter(v=>v.chatid==chatid)
+        const chatmsgs = this.props.chat.chatmsg.filter(v => v.chatid == chatid)
 
         return (
             <div className="chat-page">
                 <NavBar
-                    icon={<Icon type="left" />}
+                    icon={<Icon type="left"/>}
                     mode="dark"
-                    onLeftClick={()=>{
+                    onLeftClick={() => {
                         this.props.history.goBack()
                     }}
                 >
@@ -66,9 +78,9 @@ class Chat extends React.Component {
                     {/*{userid}*/}
                 </NavBar>
 
-                {chatmsgs.map(v=>{
-                   const avatar = require(`../image/${users[v.from].avatar}.jpg`)
-                    return v.from==userid?(
+                {chatmsgs.map(v => {
+                    const avatar = require(`../image/${users[v.from].avatar}.jpg`)
+                    return v.from == userid ? (
                         <List key={v._id}>
                             <Item
                                 thumb={avatar}
@@ -76,10 +88,10 @@ class Chat extends React.Component {
                                 {v.content}
                             </Item>
                         </List>
-                    ):(
+                    ) : (
                         <List key={v._id}>
                             <Item
-                                extra={<img src={avatar} />}
+                                extra={<img src={avatar}/>}
                                 className={"chat-me"}
                             >
                                 {v.content}
@@ -87,18 +99,47 @@ class Chat extends React.Component {
                         </List>
                     )
                 })}
-                <List className="chat-footer">
-                    <InputItem
-                        placeholder="请输入"
-                        value={this.state.text}
-                        onChange={v => {
-                            this.setState({text: v})
+                <div className="stick-footer">
+                    <List className="chat-footer">
+                        <InputItem
+                            placeholder="请输入"
+                            value={this.state.text}
+                            onChange={v => {
+                                this.setState({text: v})
+                            }}
+                            extra={
+                                <div>
+                                    <span
+                                        onClick={()=>{
+                                            this.setState({
+                                                showEmoji:!this.state.showEmoji
+                                            })
+                                            this.fixCarousel()
+                                        }}
+                                        style={{marginRight:15}}
+                                    >😊</span>
+                                    <span onClick={() => this.handleSubmit()}>发送</span>
+                                </div>
+                            }
+                        >
+                            信息
+                        </InputItem>
+                    </List>
+                    {this.state.showEmoji?<Grid
+                        data={emoji}
+                        columnNum={9}
+                        carouselMaxRow={4}
+                        isCarousel={true}
+                        onClick={el=>{
+                            this.setState({
+                                text:this.state.text+el.text
+                            })
+                            console.log(el)
                         }}
-                        extra={<span onClick={() => this.handleSubmit()}>发送</span>}
-                    >
-                        信息
-                    </InputItem>
-                </List>
+                    />:null}
+
+                </div>
+
             </div>
         )
     }
