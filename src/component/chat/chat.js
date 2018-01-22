@@ -1,12 +1,12 @@
 import React from "react";
 import {List, InputItem, NavBar, Icon, Grid} from "antd-mobile";
 import {connect} from "react-redux";
-import io from "socket.io-client";
+// import io from "socket.io-client";
 
 import {getMsgList, sendMsg, recvMsg, readMsg} from "../../redux/chat.redux.js";
 import {getChatId} from "../../util.js";
 
-const socket = io("ws://localhost:9093");
+// const socket = io("ws://localhost:9093");
 
 @connect(
     state => state,
@@ -31,6 +31,7 @@ class Chat extends React.Component {
         console.log(this.props)
 
     }
+
     //在当前页面，收到消息不会提示未读
     componentWillUnmount() {
         // 获取聊天用户
@@ -39,6 +40,7 @@ class Chat extends React.Component {
         this.props.readMsg(to)
         console.log(this.props)
     }
+
     fixCarousel() {
         setTimeout(function () {
             window.dispatchEvent(new Event("resize"))
@@ -102,7 +104,7 @@ class Chat extends React.Component {
                     ) : (
                         <List key={v._id}>
                             <Item
-                                extra={<img src={avatar}/>}
+                                extra={<img alt="头像" src={avatar}/>}
                                 className={"chat-me"}
                             >
                                 {v.content}
