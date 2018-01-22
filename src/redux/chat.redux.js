@@ -32,13 +32,10 @@ export function chat(state = initState, action) {
             const n = action.payload.to == action.userid ? 1 : 0
             return {...state, chatmsg: [...state.chatmsg, action.payload], unread: state.unread + n}
         case MSG_READ:
-            const {from, num} = action.payload
+            const {from,num} = action.payload
             return {
-                //遍历聊天信息+判断未读信息                        如果发给我和这个相同就是true，否则还是之前的状态
-                ...state,
-                chatmsg: state.chatmsg.map(v => ({...v, read: from == v.from ? true : v.read})),
-                unread: state.unread - num
-            }
+                 //遍历聊天信息+判断未读信息                        如果发给我和这个相同就是true，否则还是之前的
+                 ...state, chatmsg: state.chatmsg.map(v =>({...v,read:from==v.from?true:v.read})), unread: state.unread - num}
         default:
             return state
     }
@@ -60,16 +57,18 @@ function msgRead({from, userid, num}) {
 
 // getState是需要从redux里面获取登录的信息
 // from 谁和我聊天
+// asyns+await配合使用，await必须在async内部
 export function readMsg(from) {
-    return (dispatch, getState) => {
-        axios.post("/user/readmsg", {from})
-            .then(res => {
-                //redux里面储存的登录id
-                const userid = getState().user._id
-                if (res.status == 200 && res.data.code == 0) {
-                    dispatch(msgRead({userid, from, num: res.data.num}))
-                }
-            })
+    return async (dispatch, getState) => {
+        const res = await  axios.post("/user/readmsg", {from})
+        const userid = getState().user._id
+        if (res.status == 200 && res.data.code == 0) {
+            dispatch(msgRead({userid, from, num: res.data.num}))
+        }
+            // .then(res => {
+            //     //redux里面储存的登录id
+            //
+            // })
     }
 }
 
