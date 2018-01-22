@@ -22,6 +22,7 @@ import GeniusInfo from "./container/geniusinfo/geniusinfo.js";
 import AuthRoute from "./component/authroute/authroute.js";
 import Dashboard from "./component/dashboard/dashboard.js";
 import Chat from "./component/chat/chat.js";
+
 // 引入css样式
 import "./index.css";
 

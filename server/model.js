@@ -1,8 +1,8 @@
 const mongoose = require("mongoose")
 
 // 连接mongo 并且使用imooc集合
-const DB_URL = "mongodb://localhost:27017/myapp-chat"
-mongoose.connect(DB_URL)
+const DB_URL = "mongodb://localhost:27017/myapp-chat";
+mongoose.connect(DB_URL);
 
 const models = {
     user: {
@@ -28,7 +28,7 @@ const models = {
         "content": {"type": String, "require": true, default: ""},
         "create_time": {"type": Number, "default": new Date().getTime()}
     }
-}
+};
 
 for (let m in models) {
     mongoose.model(m, new mongoose.Schema(models[m]))
@@ -38,4 +38,4 @@ module.exports = {
     getModel: function (name) {
         return mongoose.model(name)
     }
-}
+};

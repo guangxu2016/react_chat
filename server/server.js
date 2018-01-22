@@ -33,4 +33,4 @@ app.use("/user", userRouter)
 
 server.listen(9093, function () {
     console.log("NODE app start at port 9093");
-})
+});
