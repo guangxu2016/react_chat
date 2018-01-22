@@ -6,7 +6,7 @@
 */
 
 import React from "react";
-import {Card} from "antd-mobile";
+// import {Card} from "antd-mobile";
 import {connect} from "react-redux";
 
 import {getUserList} from "../../redux/chatuser.redux.js";
@@ -31,8 +31,8 @@ class Boss extends React.Component {
         this.props.getUserList("genius")
     }
     render() {
-        const Header = Card.Header
-        const Body = Card.Body
+        // const Header = Card.Header
+        // const Body = Card.Body
         return <UserCard userlist={this.props.userlist}></UserCard>
     }
 }

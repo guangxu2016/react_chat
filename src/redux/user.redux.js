@@ -69,7 +69,7 @@ export function login({user,pwd}) {
         axios.post("/user/login",{user,pwd})
         .then(res=>{
             if(res.status==200&&res.data.code==0) {
-                {/*后端返回的data字段*/}
+               // 后端返回的字段
                 dispatch(authSuccess(res.data.data))
             }else {
                 dispatch(errorMsg(res.data.msg))

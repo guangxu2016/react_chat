@@ -1,7 +1,10 @@
 import React from "react";
 import {List, InputItem, NavBar, Icon, Grid} from "antd-mobile";
 import {connect} from "react-redux";
+// css动画
+import QueueAnim from "rc-queue-anim";
 // import io from "socket.io-client";
+
 
 import {getMsgList, sendMsg, recvMsg, readMsg} from "../../redux/chat.redux.js";
 import {getChatId} from "../../util.js";
@@ -91,6 +94,12 @@ class Chat extends React.Component {
                     {/*{userid}*/}
                 </NavBar>
 
+                <QueueAnim
+                    type="scale"
+                    delay={100}
+                    interval={300}
+                    leaveReverse={true}
+                >
                 {chatmsgs.map(v => {
                     const avatar = require(`../image/${users[v.from].avatar}.jpg`)
                     return v.from == userid ? (
@@ -112,6 +121,9 @@ class Chat extends React.Component {
                         </List>
                     )
                 })}
+
+                </QueueAnim>
+
                 <div className="stick-footer">
                     <List className="chat-footer">
                         <InputItem

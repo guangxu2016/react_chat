@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Result, List, WhiteSpace, Modal} from "antd-mobile";
-import browserCookie from "browser-cookies";
+// import browserCookie from "browser-cookies";
 import {Redirect} from "react-router-dom";
 
 import {logoutSubmit} from "../../redux/user.redux.js";
