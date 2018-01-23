@@ -8,7 +8,7 @@
 import React from "react";
 import {NavBar} from "antd-mobile";
 import {connect} from "react-redux";
-import {Switch, Route} from "react-router-dom";
+import { Route} from "react-router-dom";
 
 import NavLinkBar from "../navlink/navlink.js";
 import Boss from "../../component/boss/boss.js";
