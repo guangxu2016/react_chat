@@ -8,7 +8,7 @@
 import React from "react";
 import {NavBar} from "antd-mobile";
 import {connect} from "react-redux";
-import { Route} from "react-router-dom";
+import { Route,Redirect} from "react-router-dom";
 
 import NavLinkBar from "../navlink/navlink.js";
 import Boss from "../../component/boss/boss.js";
@@ -72,7 +72,7 @@ class Dashboard extends React.Component {
         const page = navList.find(v=>v.path==pathname)
         console.log(page)
         // 让动画生效，只渲染一个Route，根据当前的爬虫决定组件
-        return (
+        return page?(
 
             <div>
                 {/*如果页面相等就会匹配*/}
@@ -88,7 +88,7 @@ class Dashboard extends React.Component {
                 </div>
                 <NavLinkBar data={navList}></NavLinkBar>
             </div>
-        )
+        ): <Redirect to="/msg"></Redirect>
     }
 }
 
