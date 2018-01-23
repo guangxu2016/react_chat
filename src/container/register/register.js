@@ -1,9 +1,9 @@
 import React from "react";
+import {List, InputItem, Radio, WhiteSpace, Button} from "antd-mobile";
+import {Redirect} from "react-router-dom";
 
 import Logo from "../../component/logo/logo.js"
-import {List, InputItem, Radio, WhiteSpace, Button} from "antd-mobile";
 import {connect} from "react-redux";
-import {Redirect} from "react-router-dom";
 
 import {register} from "../../redux/user.redux.js";
 
@@ -32,7 +32,9 @@ class Register extends React.Component {
     }
 
     handleRegister() {
-        console.log(this.state);
+        // 当前页面
+        // console.log(this.state);
+        // console.log(this.props.state)
         this.props.register(this.state)
     }
 

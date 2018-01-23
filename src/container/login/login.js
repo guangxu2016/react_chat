@@ -31,6 +31,7 @@ class Login extends React.Component {
     render() {
         return (
            <div>
+               {/*判断是不是当前页面，不是返回null*/}
                 {this.props.redirectTo&&this.props.redirectTo!="/login"? <Redirect to={this.props.redirectTo} />:null}
              <Logo></Logo>
             <h2>我是登录页</h2>
