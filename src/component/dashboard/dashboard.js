@@ -1,8 +1,8 @@
 /*
 * @Author: Marte
 * @Date:   2018-01-17 16:27:14
-* @Last Modified by:   BOSS/牛人公用页面
-* @Last Modified time: 2018-01-17 20:35:07
+* @Last Modified by:   BOSS/牛人/信息/我
+* * @Last Modified time: 2018-01-17 20:35:07
 */
 
 import React from "react";
@@ -33,7 +33,9 @@ class Dashboard extends React.Component {
     }
 
     render() {
+        // 当前路径
         const {pathname} = this.props.location
+        //当前用户
         const user = this.props.user
 
         const navList = [
@@ -76,13 +78,14 @@ class Dashboard extends React.Component {
 
             <div>
                 {/*如果页面相等就会匹配*/}
-
+                                         {/*查找当前页面信息*/}
                 <NavBar mode="dard">{navList.find(v => v.path == pathname).title}</NavBar>
                 <div className="content_top">
                     <QueueAnim
                         type="scaleX"
                         duration={800}
                     >
+                        {/*路经*/}
                         <Route key={page.path} path={page.path} component={page.component}></Route>
                     </QueueAnim>
                 </div>

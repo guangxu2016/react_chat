@@ -10,7 +10,6 @@ import React from "react";
 import {connect} from "react-redux";
 
 import {getUserList} from "../../redux/chatuser.redux.js";
-
 import "./boss.css";
 import UserCard from "../../component/usercard/usercard.js";
 
@@ -27,7 +26,7 @@ class Boss extends React.Component {
         }
     }
     componentDidMount() {
-        // 查找数据
+        // 查找牛人数据
         this.props.getUserList("genius")
     }
     render() {
