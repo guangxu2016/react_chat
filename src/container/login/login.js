@@ -1,3 +1,6 @@
+/***
+ * 登录
+ */
 import React from "react";
 import {List,InputItem,WingBlank,WhiteSpace,Button} from "antd-mobile";
 import { connect } from "react-redux";
@@ -19,6 +22,7 @@ class Login extends React.Component {
         this.register = this.register.bind(this)
         this.handleLogin = this.handleLogin.bind(this)
     }
+
     register() {
         console.log(this.props);
         this.props.history.push("/register")

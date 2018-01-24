@@ -1,3 +1,6 @@
+/**
+ * 注册
+ */
 import React from "react";
 import {List, InputItem, Radio, WhiteSpace, Button} from "antd-mobile";
 import {Redirect} from "react-router-dom";

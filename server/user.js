@@ -21,7 +21,7 @@ Router.get("/list", function (req, res) {
         return res.json({code: 0, data: doc})
     })
 })
-
+//信息列表
 Router.get("/getmsglist", function (req, res) {
     // 获取当前用户信息
     const user = req.cookies.userid
@@ -38,7 +38,7 @@ Router.get("/getmsglist", function (req, res) {
     })
 
 })
-
+//信息
 Router.post("/readmsg", function (req, res) {
     const userid = req.cookies.userid
     //谁发送的
@@ -90,7 +90,7 @@ Router.post("/login", function (req, res) {
 })
 // 注册信息
 Router.post("/register", function (req, res) {
-    console.log(req.body);
+    // console.log(req.body);
     const {user, pwd, type} = req.body
     // 判断是否正确
     User.findOne({user}, function (err, doc) {
