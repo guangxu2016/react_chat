@@ -27,6 +27,7 @@ class AvatarSelect extends React.Component {
                 icon: require(`../image/${v}.jpg`),
                 text: v
             }))
+        //选择的某个图片
         const gridHeader = this.state.icon
             ? (<div>
                 <span>已选择头像</span>
@@ -41,7 +42,7 @@ class AvatarSelect extends React.Component {
                         columnNum={4}
                         onClick={elm => {
                             this.setState(elm)
-                            console.log(this.setState(elm));
+                            // console.log(this.setState(elm));
                             this.props.selectAvatar(elm.text)
                         }}
                     />

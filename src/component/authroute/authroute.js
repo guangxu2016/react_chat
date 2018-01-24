@@ -15,7 +15,7 @@ import { loadData } from "../../redux/user.redux.js";
 class AuthRoute extends React.Component{
     componentDidMount() {
         const publicList = ["/login","/register"]
-         // 判断页面
+         // 当前页面
         const pathname = this.props.location.pathname
         console.log(pathname);
         if(publicList.indexOf(pathname)>-1) {

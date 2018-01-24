@@ -1,7 +1,7 @@
 /*
 * @Author: Marte
 * @Date:   2018-01-17 12:14:09
-* @Last Modified by:  牛人信息
+* @Last Modified by:  注册牛人信息页面
 * @Last Modified time: 2018-01-17 21:33:04
 */
 import React from "react";

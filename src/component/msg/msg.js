@@ -44,8 +44,8 @@ class Msg extends React.Component {
                         const lastItem = this.getLast(v)
                         //v是数组
                         const targetId = v[0].from == userid ? v[0].to : v[0].from
-                        const name = userinfo[targetId] ? userinfo[targetId].name : ""
-                        const avatar = userinfo[targetId] ? userinfo[targetId].avatar : ""
+                        // const name = userinfo[targetId] ? userinfo[targetId].name : ""
+                        // const avatar = userinfo[targetId] ? userinfo[targetId].avatar : ""
                         // 未读
                         const unreadNum = v.filter(v => !v.read && v.to == userid).length
 
