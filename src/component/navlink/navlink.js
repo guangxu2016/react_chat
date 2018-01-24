@@ -24,14 +24,14 @@ class NavLinkBar extends React.Component {
     render() {
         //过滤隐藏信息
         const navList = this.props.data.filter(v => !v.hide)
-        //当前路径
+
         const {pathname} = this.props.location
         console.log(navList);
         return (
             <TabBar className="tab_bar">
                 {navList.map(v => (
                     <TabBar.Item
-                        {/*消息页面未读*/}
+                        //判断消息是否未读
                         badge={v.path=="/msg"?this.props.unread:""}
                         className="tab_bar"
                         key={v.path}
