@@ -15,6 +15,7 @@ import imoocFrom from "../../component/imooc-from/imooc-from.js";
     {login}
 )
 @imoocFrom
+
 class Login extends React.Component {
     constructor(props) {
         super(props);
