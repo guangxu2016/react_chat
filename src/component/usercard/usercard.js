@@ -1,3 +1,6 @@
+/**
+ * boss 牛人
+ */
 import React from "react";
 import PropTypes from "prop-types";
 import {Card, WingBlank} from "antd-mobile";

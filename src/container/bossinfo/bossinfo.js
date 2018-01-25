@@ -7,9 +7,9 @@
 import React from "react";
 import {NavBar,InputItem,TextareaItem,Button} from "antd-mobile";
 import {connect} from "react-redux";
-import {update} from "../../redux/user.redux.js";
 import {Redirect} from "react-router-dom";
 
+import {update} from "../../redux/user.redux.js";
 import AvatarSelect from "../../component/avatar-select/avatar-select.js";
 
 @connect (
@@ -35,9 +35,10 @@ class BossInfo extends React.Component {
     render() {
         // 当前页面
         const path = this.props.location.pathname
-        console.log(path);
+        // console.log(path);
+        //跳转到页面
         const redirect = this.props.redirectTo
-        console.log(redirect);
+        // console.log(redirect);
         return (
             <div>
                 {/*判断跳转页面是否相同*/}
@@ -67,7 +68,6 @@ class BossInfo extends React.Component {
                  autoHeight
                  title="职位要求"
                  >
-
                  </TextareaItem>
                  <Button
                     onClick={()=>{
