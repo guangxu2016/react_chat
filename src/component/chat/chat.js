@@ -41,9 +41,10 @@ class Chat extends React.Component {
         const to = this.props.match.params.user
         //to和谁聊天
         this.props.readMsg(to)
-        console.log(this.props)
+        // console.log(this.props)
     }
 
+    //修正跑马灯bug
     fixCarousel() {
         setTimeout(function () {
             window.dispatchEvent(new Event("resize"))
@@ -74,6 +75,7 @@ class Chat extends React.Component {
         const userid = this.props.match.params.user
         const Item = List.Item
         const users = this.props.chat.users
+        //如果 没有当前用户聊天信息就不渲染
         if (!users[userid]) {
             return null
         }
@@ -81,6 +83,7 @@ class Chat extends React.Component {
         // 过滤用户信息
         const chatmsgs = this.props.chat.chatmsg.filter(v => v.chatid == chatid)
 
+        // console.log(this.props)
         return (
             <div className="chat-page">
                 <NavBar
@@ -100,27 +103,30 @@ class Chat extends React.Component {
                     interval={300}
                     leaveReverse={true}
                 >
-                {chatmsgs.map(v => {
-                    const avatar = require(`../image/${users[v.from].avatar}.jpg`)
-                    return v.from == userid ? (
-                        <List key={v._id}>
-                            <Item
-                                thumb={avatar}
-                            >
-                                {v.content}
-                            </Item>
-                        </List>
-                    ) : (
-                        <List key={v._id}>
-                            <Item
-                                extra={<img alt="头像" src={avatar}/>}
-                                className={"chat-me"}
-                            >
-                                {v.content}
-                            </Item>
-                        </List>
-                    )
-                })}
+                    {/*遍历聊天信息，显示数据*/}
+                    {chatmsgs.map(v => {
+                        const avatar = require(`../image/${users[v.from].avatar}.jpg`)
+
+                        return v.from == userid ? (
+                            <List key={v._id}>
+                                <Item
+                                    thumb={avatar}
+                                >
+                                    {v.content}
+                                </Item>
+                            </List>
+                        ) : (
+                            // 对方发来的
+                            <List key={v._id}>
+                                <Item
+                                    extra={<img alt="头像" src={avatar}/>}
+                                    className={"chat-me"}
+                                >
+                                    {v.content}
+                                </Item>
+                            </List>
+                        )
+                    })}
 
                 </QueueAnim>
 

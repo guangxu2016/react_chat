@@ -18,8 +18,7 @@ class Msg extends React.Component {
         const userid = this.props.user._id
         // 聊天用户信息
         const userinfo = this.props.chat.users
-
-        console.log(this.props)
+        // console.log(this.props)
         const msgGroup = {}
         //对输入的内容遍历
         this.props.chat.chatmsg.forEach(v => {
@@ -39,7 +38,7 @@ class Msg extends React.Component {
             <div>
                 <List>
                     {chatList.map(v => {
-                        console.log(v)
+                        // console.log(v)
                         // 聊天信息
                         const lastItem = this.getLast(v)
                         //v是数组
