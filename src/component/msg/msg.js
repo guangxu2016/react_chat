@@ -22,11 +22,11 @@ class Msg extends React.Component {
         const msgGroup = {}
         //对输入的内容遍历
         this.props.chat.chatmsg.forEach(v => {
-            // 判断是否相同，不是返回空数组
+            // 是否有这个id，不是返回空数组
             msgGroup[v.chatid] = msgGroup[v.chatid] || []
             msgGroup[v.chatid].push(v)
         })
-        console.log(msgGroup)
+        // console.log(msgGroup)
         //对消息排序
         const chatList = Object.values(msgGroup).sort((a, b) => {
             const a_last = this.getLast(a).create_time
@@ -43,8 +43,7 @@ class Msg extends React.Component {
                         const lastItem = this.getLast(v)
                         //v是数组
                         const targetId = v[0].from == userid ? v[0].to : v[0].from
-                        // const name = userinfo[targetId] ? userinfo[targetId].name : ""
-                        // const avatar = userinfo[targetId] ? userinfo[targetId].avatar : ""
+
                         // 未读
                         const unreadNum = v.filter(v => !v.read && v.to == userid).length
 
