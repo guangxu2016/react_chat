@@ -149,6 +149,7 @@ class Chat extends React.Component {
                                         }}
                                         style={{marginRight: 15}}
                                     >😊</span>
+
                                     <span onClick={() => this.handleSubmit()}>发送</span>
                                 </div>
                             }
