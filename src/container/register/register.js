@@ -12,7 +12,7 @@ import {register} from "../../redux/user.redux.js";
 
 @connect(
     state => state.user,
-    // 判断输入是否正确register
+    // 判断输入是否正确   register
     {register}
 )
 
