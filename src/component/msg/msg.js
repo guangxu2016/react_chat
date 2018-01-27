@@ -44,12 +44,14 @@ class Msg extends React.Component {
                         //v是数组
                         const targetId = v[0].from == userid ? v[0].to : v[0].from
 
-                        // 未读
+                        // 未读                           这个用户未读信息
                         const unreadNum = v.filter(v => !v.read && v.to == userid).length
 
                         return (<Item
+                            //箭头
                             arrow="horizontal"
                             key={lastItem._id}
+                            //badge显示消息未读数量
                             extra={<Badge text={unreadNum}></Badge>}
                             thumb={require(`../image/${userinfo[targetId].avatar}.jpg`)}
                             onClick={() => {
