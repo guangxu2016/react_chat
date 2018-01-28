@@ -33,7 +33,7 @@ class Dashboard extends React.Component {
     }
 
     render() {
-        // 当前路径
+        // 当前路径this.props.location
         const {pathname} = this.props.location
         //当前用户
         const user = this.props.user
@@ -70,16 +70,16 @@ class Dashboard extends React.Component {
                 component: User
             }
         ]
-        // console.log(navList)
+        // console.log(navList)   当前页面
         const page = navList.find(v=>v.path==pathname)
-        console.log(page)
+        // console.log(page)
         // 让动画生效，只渲染一个Route，根据当前的爬虫决定组件
         return page?(
 
             <div>
                 {/*如果页面相等就会匹配*/}
                                          {/*查找当前页面信息*/}
-                <NavBar mode="dard">{navList.find(v => v.path == pathname).title}</NavBar>
+                <NavBar mode="dard">{page.title}</NavBar>
                 <div className="content_top">
                     <QueueAnim
                         type="scaleX"

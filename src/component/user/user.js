@@ -32,7 +32,7 @@ class User extends React.Component {
             }
         ])
         // browserCookie.erase("userid")
-        console.log("logout")
+        // console.log("logout")
     }
 
     render() {
