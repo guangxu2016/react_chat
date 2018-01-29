@@ -30,7 +30,7 @@ class AvatarSelect extends React.Component {
         //选择的某个图片
         const gridHeader = this.state.icon
             ? (<div>
-                <span>已选择头像:</span>
+                <span>已选择头像</span>
                 <img style={{width: 35}} src={this.state.icon} alt=""/>
             </div>)
             : "请选择头像"
