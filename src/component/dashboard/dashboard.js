@@ -91,7 +91,7 @@ class Dashboard extends React.Component {
                 </div>
                 <NavLinkBar data={navList}></NavLinkBar>
             </div>
-        ): <Redirect to="/msg"></Redirect>
+        ): <Redirect to="/login"></Redirect>
     }
 }
 
