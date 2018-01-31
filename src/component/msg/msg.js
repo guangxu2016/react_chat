@@ -48,10 +48,9 @@ class Msg extends React.Component {
                         const unreadNum = v.filter(v => !v.read && v.to == userid).length
 
                         return (<Item
-
                             arrow="horizontal"
                             key={lastItem._id}
-                            //badge显示消息未读数量
+                            {/*badge显示消息未读数量
                             extra={<Badge text={unreadNum}></Badge>}
                             thumb={require(`../image/${userinfo[targetId].avatar}.jpg`)}
                             onClick={() => {
