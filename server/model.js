@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-// 连接mongo 并且使用imooc集合
+// 连接mongo
 const DB_URL = "mongodb://localhost:27017/myapp-chat";
 mongoose.connect(DB_URL);
 

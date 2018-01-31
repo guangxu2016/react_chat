@@ -25,11 +25,13 @@ class Login extends React.Component {
     }
 
     register() {
-        console.log(this.props);
+        // console.log(this.props);
         this.props.history.push("/register")
     }
 
     handleLogin() {
+        //当前用户名+密码
+        // console.log(this.props.state)
         this.props.login(this.props.state)
     }
 

@@ -48,7 +48,7 @@ class Msg extends React.Component {
                         const unreadNum = v.filter(v => !v.read && v.to == userid).length
 
                         return (<Item
-                            //箭头
+
                             arrow="horizontal"
                             key={lastItem._id}
                             //badge显示消息未读数量
