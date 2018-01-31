@@ -38,9 +38,10 @@ class Msg extends React.Component {
             <div>
                 <List>
                     {chatList.map(v => {
-                        // console.log(v)
+
                         // 聊天信息
                         const lastItem = this.getLast(v)
+                        // console.log(lastItem) 最后一个聊天信息
                         //v是数组
                         const targetId = v[0].from == userid ? v[0].to : v[0].from
 
