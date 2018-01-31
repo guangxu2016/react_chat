@@ -36,24 +36,30 @@ class User extends React.Component {
     }
 
     render() {
+        // console.log(this.props)
+        //当前用户信息
         const props = this.props
         const Item = List.Item
         const Brief = Item.Brief
-        console.log(this.props)
+        // console.log(props.user)
+        //当前用户
         return props.user ? (
+
             <div>
+
                 <Result
                     className="width"
                     img={<img src={require(`../image/${props.avatar}.jpg`)} alt=""/>}
                     title={props.user}
                     message={props.type == "boss" ? props.company : null}
                 />
+
                 <List renderHeader={() => "简介"}>
                     <Item
                         multipleLine
                     >
                         {props.title}
-                        {this.props.desc.split("\n").map(v => <Brief key={v}>{v}</Brief>)}
+                        {props.desc.split("\n").map(v => <Brief key={v}>{v}</Brief>)}
                         {props.money ? <Brief>薪资:{props.money}</Brief> : null}
                     </Item>
                 </List>
