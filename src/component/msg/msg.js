@@ -50,7 +50,7 @@ class Msg extends React.Component {
                         return (<Item
                             arrow="horizontal"
                             key={lastItem._id}
-                            {/*badge显示消息未读数量
+                            // 显示未读消息数量
                             extra={<Badge text={unreadNum}></Badge>}
                             thumb={require(`../image/${userinfo[targetId].avatar}.jpg`)}
                             onClick={() => {
