@@ -97,8 +97,9 @@ Router.post("/register", function (req, res) {
         if (doc) {
             return res.json({code: 1, msg: "用户名重复"})
         }
-
+            // 加密
         const userModel = new User({user, type, pwd: md5Pwd(pwd)})
+
         userModel.save(function (e, d) {
             if (e) {
                 return res.json({code: 1, msg: "后端出错了"})

@@ -71,7 +71,7 @@ class Chat extends React.Component {
             .filter(v => v)
             .map(v => ({text: v}))
 
-        // console.log(this.props)
+        // console.log(this.props) 获取用户id
         const userid = this.props.match.params.user
         const Item = List.Item
         const users = this.props.chat.users
@@ -112,6 +112,7 @@ class Chat extends React.Component {
                                 <Item
                                     thumb={avatar}
                                 >
+                            {/*我发的*/}
                                     {v.content}
                                 </Item>
                             </List>
@@ -166,7 +167,7 @@ class Chat extends React.Component {
                             this.setState({
                                 text: this.state.text + el.text
                             })
-                            console.log(el)
+                            // console.log(el)
                         }}
                     /> : null}
 
